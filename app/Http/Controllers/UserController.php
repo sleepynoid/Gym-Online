@@ -16,11 +16,11 @@ use Redirect;
 class UserController extends Controller {
     //
     public function index() {
-        return Inertia::render('User/index', ['users' => User::all()]);
+        return Inertia::render('User/Index', ['users' => User::all()]);
     }
 
     public function create() {
-        return Inertia::render('User/create');
+        return Inertia::render('User/Create');
     }
 
     public function insert(Request $request) {
@@ -43,10 +43,6 @@ class UserController extends Controller {
         //     'user' => $user, // Optionally include the created user
         // ],200);
         return redirect(route('users.create'));
-    }
-
-    public function delete() {
-        Inertia::render('Users.delete');
     }
 
     public function destroy(Request $request) {
@@ -72,5 +68,15 @@ class UserController extends Controller {
         // Return a success response
         // return response()->json(['message' => 'User deleted successfully.']);
         return Redirect::route('users.index');
+    }
+
+    public function edit($id) {
+        $user = User::findOrFail($id);
+        if (!$user) {
+            abort(404);
+        }
+        return Inertia::render('User/Edit', [
+            'user' => $user,
+        ]);
     }
 }

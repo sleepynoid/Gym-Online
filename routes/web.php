@@ -22,9 +22,10 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-    Route::post('/users/insert', [UserController::class, 'insert'])->name('users');
+    Route::post('/users', [UserController::class, 'insert'])->name('users.insert');
     // Route::delete('/users/{id}',[UserController::class, 'destroy'])->name('users.destroy');
     Route::delete('/users/delete',[UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
 });
 
 Route::middleware('auth')->group(function () {

@@ -32,8 +32,8 @@ const deleteUserBeta = (name, email) => {
     }
 };
 
-const redirectToEditUser = () => {
-    router.visit(route('users.Edit')); // Navigate to the specified route
+const redirectToEditUser = (id) => {
+    router.visit(route('users.edit', id)); // Navigate to the specified route
 };
 </script>
 <template>
@@ -96,7 +96,7 @@ const redirectToEditUser = () => {
                                 <!-- Edit Button -->
                                 <SecondaryButton
                                     class="my-4 rounded-lg bg-blue-500 px-4 py-2 font-semibold text-black shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-                                    @click="redirectToEditUser"
+                                    @click.prevent="redirectToEditUser(user.id)"
                                 >
                                     Edit
                                 </SecondaryButton>

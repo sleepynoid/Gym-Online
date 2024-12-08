@@ -1,33 +1,52 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
-// Create a form instance
+// Define props
+const props = defineProps({
+    user: {
+        type: Object,
+        required: true, // Ensure the `user` prop is passed and required
+    },
+});
+
+// Create a form instance with default values
 const form = useForm({
-    name: '',
-    email: '',
-    password: '',
+    name: props.user.name || '', // Initialize form fields from user prop
+    email: props.user.email || '',
+    password: '', // Leave password fields empty
     password_confirmation: '',
 });
+
+// Watch for changes to `user` prop and update form fields
+watch(
+    () => props.user, // The dependency to watch
+    (newUser) => {
+        if (newUser) {
+            form.name = newUser.name || ''; // Update form values
+            form.email = newUser.email || '';
+        }
+    },
+    { immediate: true }, // Run immediately for the initial value
+);
 
 // Refs for focusing fields
 const passwordRef = ref(null);
 const passwordConfirmationRef = ref(null);
 
+// Submit handler
 const submit = () => {
-    form.post(route('users.insert'), {
+    form.post(route('users'), {
         preserveScroll: true, // Retain scroll position
         onSuccess: () => {
-            // Clear all form fields and error messages
-            form.reset();
-            form.clearErrors();
+            form.reset(); // Reset the form on success
+            form.clearErrors(); // Clear error messages
         },
         onError: () => {
-            // Handle specific field errors
             if (form.errors.password) {
                 form.reset('password', 'password_confirmation'); // Reset password fields
                 passwordRef.value?.focus(); // Focus on password input
@@ -45,7 +64,7 @@ const submit = () => {
             </h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                Insert your account's profile information and email address.
+                Edit your account's profile information and email address.
             </p>
         </header>
 
