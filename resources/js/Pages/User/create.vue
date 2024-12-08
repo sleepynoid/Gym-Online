@@ -1,22 +1,19 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import NewUserForm from '@/Pages/User/Partials/NewUserForm.vue';
 </script>
 
 <template>
-    <Head title="Dashboard" />
-
     <AuthenticatedLayout>
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                Dashboard Home
+                Create User
             </h2>
         </template>
-
         <div class="py-12">
-            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">You're logged in!</div>
+            <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
+                <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
+                    <NewUserForm class="max-w-xl" />
                 </div>
             </div>
         </div>
