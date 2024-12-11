@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\GymController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
@@ -24,8 +26,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::post('/users', [UserController::class, 'insert'])->name('users.insert');
     // Route::delete('/users/{id}',[UserController::class, 'destroy'])->name('users.destroy');
-    Route::delete('/users/delete',[UserController::class, 'destroy'])->name('users.destroy');
+    Route::delete('/users/delete', [UserController::class, 'destroy'])->name('users.destroy');
     Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/gym', [GymController::class, 'index'])->name('gym.index');
+    Route::post('gym', [GymController::class, 'store'])->name('gym.insert');
+    Route::delete('/gym/{gym}', [GymController::class, 'destroy'])->name('gym.destroy');
+    Route::get('/gym/create', [GymController::class, 'create'])->name('gym.create');
+    Route::get('/gym/{gym}/edit', [GymController::class, 'edit'])->name('gym.edit');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/member', [MemberController::class, 'index'])->name('member.index');
+    Route::get('/member/create', [MemberController::class, 'create'])->name('member.create');
 });
 
 Route::middleware('auth')->group(function () {
@@ -34,4 +49,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
