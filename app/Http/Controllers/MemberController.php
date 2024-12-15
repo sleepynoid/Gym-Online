@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
-<<<<<<< HEAD
-=======
 use Exception;
->>>>>>> main
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -19,11 +16,6 @@ class MemberController extends Controller {
             'members' => Member::all(),
         ]);
     }
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> main
 
     /**
      * Show the form for creating a new resource.
@@ -82,15 +74,11 @@ class MemberController extends Controller {
      * Remove the specified resource from storage.
      */
     public function destroy(Member $member) {
-<<<<<<< HEAD
-        //
-=======
         try {
             $member->delete();
         } catch (Exception $e) {
             return redirect()->route('member.index')
                 ->with('error', 'Failed to delete the member. Please try again.');
         }
->>>>>>> main
     }
 }
