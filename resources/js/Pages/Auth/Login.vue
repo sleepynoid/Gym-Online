@@ -105,12 +105,7 @@ const googleLoginUrl = route('auth.google'); // Ensure this matches the Laravel 
                 :href="googleLoginUrl"
                 class="mt-2 inline-flex items-center justify-center rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
             >
-                <svg
-                    class="me-2 h-5 w-5"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                >
+                <svg class="h-5 w-5 me-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path
                         d="M22.54 12.27c0-.83-.08-1.62-.23-2.39H12v4.52h5.89a5.04 5.04 0 0 1-2.19 3.31v2.76h3.54c2.07-1.91 3.3-4.73 3.3-8.2z"
                         fill="#4285F4"

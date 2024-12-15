@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Exception;
-use Exception;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -76,12 +75,6 @@ class MemberController extends Controller {
      * Remove the specified resource from storage.
      */
     public function destroy(Member $member) {
-        try {
-            $member->delete();
-        } catch (Exception $e) {
-            return redirect()->route('member.index')
-                ->with('error', 'Failed to delete the member. Please try again.');
-        }
         try {
             $member->delete();
         } catch (Exception $e) {
