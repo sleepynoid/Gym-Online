@@ -28,6 +28,7 @@ const redirectToEditGym = (gymId) => {
     router.visit(route('gym.edit', { gym: gymId })); // Navigate to the specified route
 };
 </script>
+
 <template>
     <section>
         <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">

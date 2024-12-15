@@ -40,6 +40,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/member', [MemberController::class, 'index'])->name('member.index');
+    Route::post('/member', [MemberController::class, 'store'])->name('member.insert');
+<<<<<<< HEAD
+    Route::delete('/member', [MemberController::class, 'destroy'])->name('member.destroy');
+=======
+    Route::delete('/member/{member}', [MemberController::class, 'destroy'])->name('member.destroy');
+>>>>>>> main
     Route::get('/member/create', [MemberController::class, 'create'])->name('member.create');
 });
 
