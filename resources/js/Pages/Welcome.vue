@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import HomeLayout from '@/Layouts/HomeLayout.vue';
 import { Head } from '@inertiajs/vue3';
 
@@ -25,7 +25,7 @@ defineProps({
     <HomeLayout :laravel-version="laravelVersion" :php-version="phpVersion">
         <div class="relative">
             <img
-                src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="/pexels-photo-1954524.webp"
                 alt="Guy Doing Gym"
                 class="mx-auto h-screen w-full object-cover brightness-50"
             />
